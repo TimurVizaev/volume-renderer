@@ -1,0 +1,131 @@
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+  background: linear-gradient(to right, #2e4c66 , #14212c);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	color: rgb(26, 26, 26);
+  font-weight: 100;
+}
+
+  /*Loader */
+  .spinner 
+  {
+    position: absolute;
+    margin: 100px auto 0;
+    width: 70px;
+    top: 40%;
+    left: 48%;
+    text-align: center;
+  }
+  
+  .spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: rgba(255, 255, 255, 0.568);
+  
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+  
+  .spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+  
+  .spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+  
+  @-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+  }
+  
+  @keyframes sk-bouncedelay {
+    0%, 80%, 100% { 
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    } 40% { 
+      -webkit-transform: scale(1.0);
+      transform: scale(1.0);
+    }
+  }
+
+#info {
+  position: fixed;
+  display: none;
+	top: 100px;
+	box-sizing: border-box;
+	text-align: center;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+  color: white;
+	font-variant: small-caps;
+
+  border-radius: 20px;
+  background: linear-gradient(to right, #4b79a19d , #283e51a2);
+  padding: 15px;
+  width: 50%;
+  left: 25%;
+}
+
+#container{
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+
+.mainViewport { grid-area: mainViewport; margin: 5px; width:99.3%;}
+.mainViewport canvas { outline: 0; } /* hides focus */
+.viewport1 { grid-area: viewport1; }
+.flowChart { grid-area: flowChart; }
+
+.grid-container {
+  display: grid;
+  width:100%;
+  height:100%;
+  grid-template-areas:
+    'viewport1 mainViewport'
+    'flowChart mainViewport';
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 60% 40%;
+  grid-gap: 0px;
+}
+
+#MainCanvas
+{
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+#OrientationCubeContainer {
+  width: 100;
+  height: 100;
+  background-color: transparent; /* or transparent; will show through only if renderer alpha: true */
+  border: none; /* or none; */
+  margin: 0;
+  padding: 0px;
+  position: fixed;
+  left: 19.5%;
+  bottom: 0px;
+  z-index: 100;
+}
+
+#OrientationCubeContainer canvas {
+	outline: 0;
+}
+
+#FlowChart
+{
+  margin: 5px;
+  height: 96.7%;
+}

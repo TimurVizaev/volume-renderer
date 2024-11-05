@@ -1,0 +1,107 @@
+
+
+/* The grid*/
+.card {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: 2;
+			grid-template-areas: 
+				"t-1 t-2 t-3 t-4"
+                "ver ver ver ver";
+}
+/* & the labels go to... */
+[for*='-1'] {
+	grid-area: t-1;
+}
+[for*='-2'] {
+	grid-area: t-2;
+}
+[for*='-3'] {
+	grid-area: t-3;
+}
+[for*='-4'] {
+	grid-area: t-4;
+}
+/* show each content */
+:checked + label + article
+ {
+	grid-area: ver;
+	z-index: 1;
+}
+
+/* Let´s do it nice & funny */
+.card{
+	width: 100%;
+	margin-left: 10px;
+	box-shadow: 0 3px 3px rgba(0,0,0,.3);
+	border-top: 0 none;
+	overflow: hidden;
+}
+[class*='tab-'] {
+	opacity: 0;
+	max-width: 0;
+	max-height: 0;
+	display: flex;
+	flex-direction: columns;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+:checked + label + [class*='tab-'] {
+	background: rgb(255, 255, 255);
+	opacity: 1;
+	max-width: 100%;
+	max-height: 100vh;
+	animation: show 1s;
+}
+label {
+	cursor: pointer;
+	font-variant: small-caps;
+	font-size: 1.5rem;
+	line-height: 2;
+	text-align: center;
+	z-index: 1;
+}
+label:hover {
+	background: rgba(255, 255, 255, 0.3);
+}
+input:not(checked) + label {
+    color:rgb(206, 206, 206);
+	background: rgba(255, 255, 255, 0.116);
+}
+input:checked + label {
+    color:rgb(32, 32, 32);
+	background: #fff;
+}
+.hide {
+	display: none;
+}
+h1 {
+	color: #fff;
+	text-align: center;
+	line-height: 1.2;
+	font-weight: 100;
+	font-size: 20pt;
+	margin-left: 10px;
+}
+h2 {
+	font-weight: 100;
+	margin-left: 10px;
+}
+p {
+	margin-left: 10px;
+	line-height: 1.1;
+}
+a {
+	color: #e81178;
+}
+
+@keyframes show {
+	0%, 20% {
+		opacity: 0;
+		max-height: 0;
+	}
+	100%{
+		opacity: 1;
+		max-height: 100vh;
+	}
+}

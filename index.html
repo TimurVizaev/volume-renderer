@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Volumetric Renderer Demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/tabs.css">
+	<link rel="icon"
+		href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/high-voltage-sign_26a1.png">
+</head>
+
+<body>
+	<script type="module" src="libs/three.module.js"></script>
+	<script type="module" src="libs/dat.gui.module.js"></script>
+	<script type="module" src="/VolumeShader.js"></script>
+	<script type="module" src="libs/WebGL.js"></script>
+	<script src="libs/jdataview.js"></script>
+	<script src="libs/CCapture.all.min.js"></script>
+	<script src="libs/plotly.min.js" charset="utf-8"></script>
+
+	<div id="container">
+
+		<div class="grid-container">
+			<div id="MainViewport" class="mainViewport">
+				<div id="info"></div>
+				<div id="OrientationCubeContainer"></div>
+				<canvas id="MainCanvas">
+				</canvas>
+			</div>
+			<div class="viewport1">
+
+				<h1><img src="/resources/icon.png" width="24" />Volumetric Renderer Demo</h1>
+				<div class='card'>
+
+					<input class='hide' type="radio" id="tab-1" name="tractor" checked='checked' />
+					<label for='tab-1'>MIP</label>
+					<article class='tab-1'>
+						<section>
+							<h2>Maximum Intensity Projection</h2>
+							<img src="/resources/MIP_VolumeRayCasting.png" />
+							<ul>
+								<li>Easy to implement</li>
+								<li><a href="https://www.virvig.eu/pdfs/ebaa8e7ba1161ebb89c263a5bcdea814/Diaz10-DeMIP.pdf"
+										target="_blank">
+										Depth information is lost
+									</a>
+								</li>
+							</ul>
+							</p>
+						</section>
+					</article>
+
+					<input class='hide' type="radio" id="tab-2" name="tractor" />
+					<label for='tab-2'>ISO</label>
+					<article class='tab-2'>
+						<section>
+							<h2>Isosurface</h2>
+							<img src="/resources/ISO_VolumeRayCasting.png" width="80%" />
+							<ul>
+								<li>Parameter: Isosurface Threshold</li>
+								<li>
+									<a href="https://en.wikipedia.org/wiki/Phong_reflection_model" target="_blank">
+										Phong Lighting Model (I)
+									</a>
+								</li>
+								<li>
+									<a href="https://learnopengl.com/Advanced-Lighting/Advanced-Lighting"
+										target="_blank">
+										Phong Lighting Model (II)
+									</a>
+								</li>
+
+							</ul>
+
+						</section>
+					</article>
+
+					<input class='hide' type="radio" id="tab-3" name="tractor" />
+					<label for='tab-3'>WebGL</label>
+					<article class='tab-3'>
+						<section>
+							<a href="https://en.wikipedia.org/wiki/WebGL" target="_blank">
+								<img src="/resources/WebGL_Logo.png" style="margin:20px" />
+							</a>
+							<p>GPU access from the web browser</p>
+						</section>
+					</article>
+
+					<input class='hide' type="radio" id="tab-4" name="tractor" />
+					<label for='tab-4'>About</label>
+					<article class='tab-4'>
+						<section>
+							<h2>Made by</h2>
+							<p>Timur Vizaev</p>
+							<p>timur.vizaev@gmail.com</p>
+						</section>
+					</article>
+
+				</div>
+
+			</div>
+			<div class="flowChart" id="FlowChart">
+			</div>
+		</div>
+
+
+		<div id="loading-wrapper" style="display:none;">
+			<div class="spinner">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+
+		<!--<input id="fileInput" type="file" accept=".bin" class="absolute" style="display:none;" multiple/>-->
+		<input id="fileInput" type="file" class="absolute" style="display:none;" webkitdirectory directory multiple />
+	</div>
+
+	<script type="module" src="/App.js"></script>
+
+</body>
+
+</html>
